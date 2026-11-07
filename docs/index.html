@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="LeetFlow — Google / Amazon / Microsoft SWE interview LeetCode study tracker. 90 problems, daily logs, study streak, progress dashboard, and backups." />
+  <title>LeetFlow · Interview Prep Tracker</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%236d5dfc'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-size='59' font-weight='bold' fill='white'%3E%3C/%3E%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./problems.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#dashboard" aria-label="LeetFlow 首页">
+        <span class="brand-icon"><span>&lt;/&gt;</span></span>
+        <span class="brand-name"><strong>LeetFlow</strong><small>INTERVIEW TRAINING</small></span>
+      </a>
+      <div class="nav-title">WORKSPACE</div>
+      <nav class="nav-links" id="sidebarNav">
+        <button type="button" class="nav-item active" data-view="dashboard"><span class="nav-icon">◫</span><span>总览 Dashboard</span></button>
+        <button type="button" class="nav-item" data-view="problems"><span class="nav-icon">▤</span><span>刷题清单 Problems</span><span class="nav-number">90</span></button>
+        <button type="button" class="nav-item" data-view="journal"><span class="nav-icon">◷</span><span>每日记录 Journal</span></button>
+        <button type="button" class="nav-item" data-view="analytics"><span class="nav-icon">▥</span><span>统计 Analytics</span></button>
+      </nav>
+      <div class="nav-title section-space">YOUR ROADMAP</div>
+      <div id="weekSideNav" class="week-side-nav"></div>
+      <div class="sidebar-bottom">
+        <div class="sync-pill"><span class="sync-dot"></span><span>已启用本地自动保存</span></div>
+        <div class="sidebar-tip">数据保存在当前浏览器，换设备请通过 JSON 备份迁移。</div>
+        <button class="side-settings" type="button" id="openSettings"><span>⚙</span> 设置与备份</button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-icon small">&lt;/&gt;</span><strong>LeetFlow</strong></div>
+        <div class="topbar-left"><span class="breadcrumb">WORKSPACE</span><span class="breadcrumb-sep">/</span><span id="currentPageName">Dashboard</span></div>
+        <div class="topbar-right"><span id="todayPill" class="today-pill"></span><button type="button" id="openNewLog" class="btn btn-primary"><span class="btn-symbol">＋</span> 记录一次练习</button></div>
+      </header>
+      <nav class="mobile-nav" id="mobileNav" aria-label="移动端导航">
+        <button type="button" data-view="dashboard" class="active">总览</button>
+        <button type="button" data-view="problems">题目</button>
+        <button type="button" data-view="journal">记录</button>
+        <button type="button" data-view="analytics">统计</button>
+      </nav>
+      <main class="content" id="content" tabindex="-1"></main>
+      <footer class="page-footer">Built for consistency, not perfection <span>·</span> Google L3 / Amazon SDE I / Microsoft New Grad <span>·</span> Go-first practice</footer>
+    </div>
+  </div>
+
+  <div id="modalRoot" class="modal-root hidden" aria-hidden="true">
+    <div class="modal-scrim" data-close-modal="true"></div>
+    <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="modalInner"></div></section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input id="importInput" type="file" accept=".json,application/json" hidden />
+</body>
+</html>
